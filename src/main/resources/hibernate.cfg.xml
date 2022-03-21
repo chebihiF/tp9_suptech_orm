@@ -4,6 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
+    <!-- Data Source -->
     <property name="connection.url">
       jdbc:mysql://localhost:3306/tp9_hibernate_suptech?serverTimezone=UTC
     </property>
@@ -18,5 +19,6 @@
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
   </session-factory>
 </hibernate-configuration>
