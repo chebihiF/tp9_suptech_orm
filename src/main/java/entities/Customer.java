@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity @Table(name = "client")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
 public class Customer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;

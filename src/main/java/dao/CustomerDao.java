@@ -26,6 +26,7 @@ public class CustomerDao implements ICustomerDao{
             session.getTransaction().commit();
         }catch(Exception e){
             session.getTransaction().rollback();
+            throw e;
         }finally{
             if(session != null) session.close();
         }
@@ -44,6 +45,7 @@ public class CustomerDao implements ICustomerDao{
             session.getTransaction().commit();
         }catch(Exception e){
             session.getTransaction().rollback();
+            throw e;
         }finally{
             if(session != null) session.close();
         }
@@ -62,6 +64,7 @@ public class CustomerDao implements ICustomerDao{
             session.getTransaction().commit();
         }catch(Exception e){
             session.getTransaction().rollback();
+            throw e;
         }finally{
             if(session != null) session.close();
         }
@@ -81,6 +84,7 @@ public class CustomerDao implements ICustomerDao{
             session.getTransaction().commit();
         }catch(Exception e){
             session.getTransaction().rollback();
+            throw e;
         }finally{
             if(session != null) session.close();
         }
@@ -100,6 +104,7 @@ public class CustomerDao implements ICustomerDao{
             session.getTransaction().commit();
         }catch(Exception e){
             session.getTransaction().rollback();
+            throw e;
         }finally{
             if(session != null) session.close();
         }
