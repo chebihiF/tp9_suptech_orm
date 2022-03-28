@@ -12,6 +12,7 @@ public class Customer {
     private Long id ;
     @Column(name = "nom", length = 30, unique = false)
     private String name ;
+    private String password;
     private String email ;
     @OneToMany(mappedBy ="customer")
     private List<Product> products;
