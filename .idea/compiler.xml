@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tp9" />
+        <module name="TP9_Hibernate" />
       </profile>
     </annotationProcessing>
   </component>
