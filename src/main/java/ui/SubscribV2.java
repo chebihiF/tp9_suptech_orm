@@ -6,7 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entities.Customer;
+import metier.CustomerMetier;
+import metier.ICustomerMetier;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
@@ -14,6 +21,8 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SubscribV2 extends JFrame {
 
@@ -21,6 +30,8 @@ public class SubscribV2 extends JFrame {
 	private JTextField name_txt;
 	private JTextField email_txt;
 	private JPasswordField password_txt;
+	private ICustomerMetier metier = new CustomerMetier();
+	private JFrame myframe;
 
 	/**
 	 * Launch the application.
@@ -42,6 +53,8 @@ public class SubscribV2 extends JFrame {
 	 * Create the frame.
 	 */
 	public SubscribV2() {
+		
+		myframe = this ;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 316);
@@ -97,8 +110,33 @@ public class SubscribV2 extends JFrame {
 		centerPanel.add(panel);
 		
 		JButton subscribe_btn = new JButton("Subscribe");
+		subscribe_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String name = name_txt.getText();
+				String email = email_txt.getText();
+				String password = new String(password_txt.getPassword());
+				Customer customer = new Customer(null,name,password,email,null);
+				try {
+					metier.subscribe(customer);
+					JOptionPane.showMessageDialog(myframe, "subscribe successful","Info",
+							JOptionPane.INFORMATION_MESSAGE);
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(myframe, e1.getMessage(),"Error",
+							JOptionPane.ERROR_MESSAGE);
+				}finally {
+					clean();
+				}
+			}
+		});
 		subscribe_btn.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		centerPanel.add(subscribe_btn);
+	}
+	
+	public void clean() {
+		name_txt.setText("");
+		email_txt.setText("");
+		password_txt.setText("");
 	}
 
 }
