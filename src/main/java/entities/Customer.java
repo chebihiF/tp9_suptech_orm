@@ -13,6 +13,7 @@ public class Customer {
     @Column(name = "nom", length = 30, unique = false)
     private String name ;
     private String password;
+    @Column(unique = true)
     private String email ;
     @OneToMany(mappedBy ="customer")
     private List<Product> products;

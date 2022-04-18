@@ -9,5 +9,6 @@ public interface ICustomerDao {
     Customer updateCustomer(Customer customer) throws Exception;
     Customer deleteCustomer(Customer customer) throws Exception;
     Customer getCustomerById(Long id) throws Exception;
+    Customer getCustomerByEmail(String email) throws Exception ;
     List<Customer> getCustomers() throws Exception;
 }

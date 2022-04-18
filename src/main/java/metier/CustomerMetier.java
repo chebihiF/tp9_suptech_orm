@@ -61,4 +61,16 @@ public class CustomerMetier implements ICustomerMetier {
         Pdao.updateProduct(product);
     }
 
+	@Override
+	public Customer logIN(String email, String password) throws Exception {
+		
+		Customer customer = dao.getCustomerByEmail(email);
+		if(customer == null)
+			throw new Exception("Email not found");
+		if(!customer.getPassword().equals(password))
+			throw new Exception("Password incorrect");
+		
+		return customer;
+	}
+
 }

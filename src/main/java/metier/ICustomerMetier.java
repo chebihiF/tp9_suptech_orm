@@ -6,6 +6,7 @@ import entities.Product;
 import java.util.List;
 
 public interface ICustomerMetier {
+	Customer logIN(String email, String password) throws Exception;
     Customer subscribe(Customer customer) throws Exception;
     Customer updateProfile(Customer customer) throws Exception;
     Customer getCustomerById(Long id) throws Exception;
