@@ -1,13 +1,12 @@
 package util;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-public class HibernateCrud<T,E> {
+public class HibernateCrud<T, ID> {
+	
 	private SessionFactory factory = HibernateUtil.getFactory();
     private Session session;
     
@@ -65,7 +64,7 @@ public class HibernateCrud<T,E> {
         return t;
     }
 
-    public T getById(E id) {
+    public T getById(ID id, String id_name) {
     	T t = null;
         try {
             if (session != null && session.isOpen())
@@ -74,7 +73,7 @@ public class HibernateCrud<T,E> {
                 session = factory.openSession();
             session.beginTransaction();
             
-            Query<T> q = session.createQuery("from T where id = ?");
+            Query<T> q = session.createQuery("from T t where t."+id_name+" = ?");
             q.setParameter(0, id);
             
             t = (T) q.getSingleResult();

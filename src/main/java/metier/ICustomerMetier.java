@@ -13,4 +13,5 @@ public interface ICustomerMetier {
     Customer deleteCustomer(Long id) throws Exception;
     List<Customer> getCustomers() throws Exception;
     void buyProduct(Long id, String ref) throws Exception;
+    void saveInfoAsFile(Customer customer) throws Exception;
 }

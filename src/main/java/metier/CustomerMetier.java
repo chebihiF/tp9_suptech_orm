@@ -6,7 +6,12 @@ import dao.IProductDao;
 import dao.ProductDao;
 import entities.Customer;
 import entities.Product;
+import jdk.dynalink.StandardOperation;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class CustomerMetier implements ICustomerMetier {
@@ -61,9 +66,14 @@ public class CustomerMetier implements ICustomerMetier {
         Pdao.updateProduct(product);
     }
 
-	@Override
+    @Override
+    public void saveInfoAsFile(Customer customer) throws Exception {
+        Path path = Paths.get("D:/",customer.getName()+".txt");
+        Files.writeString(path, customer.toString(), StandardOpenOption.WRITE);
+    }
+
+    @Override
 	public Customer logIN(String email, String password) throws Exception {
-		
 		Customer customer = dao.getCustomerByEmail(email);
 		if(customer == null)
 			throw new Exception("Email not found");
@@ -72,5 +82,6 @@ public class CustomerMetier implements ICustomerMetier {
 		
 		return customer;
 	}
+
 
 }
