@@ -30,12 +30,12 @@ public class ProductDao implements IProductDao{
 
     @Override
     public Product getProductByRef(String ref) throws Exception {
-        return crud.getById(ref, "ref");
+        return crud.getById(ref, "ref", Product.class.getName());
     }
 
     @Override
     public List<Product> getProducts() throws Exception {
-        return null;
+        return crud.getAll(Product.class.getName());
     }
 
     /*

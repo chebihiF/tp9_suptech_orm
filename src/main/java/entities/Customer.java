@@ -16,5 +16,6 @@ public class Customer {
     @Column(unique = true)
     private String email ;
     @OneToMany(mappedBy ="customer")
+    @ToString.Exclude
     private List<Product> products;
 }

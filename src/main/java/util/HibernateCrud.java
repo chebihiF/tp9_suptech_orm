@@ -64,7 +64,7 @@ public class HibernateCrud<T, ID> {
         return t;
     }
 
-    public T getById(ID id, String id_name) {
+    public T getById(ID id, String id_name, String className) {
     	T t = null;
         try {
             if (session != null && session.isOpen())
@@ -72,8 +72,8 @@ public class HibernateCrud<T, ID> {
             else
                 session = factory.openSession();
             session.beginTransaction();
-            
-            Query<T> q = session.createQuery("from T t where t."+id_name+" = ?");
+
+            Query<T> q = session.createQuery("from "+className+" t where t."+id_name+" = ?");
             q.setParameter(0, id);
             
             t = (T) q.getSingleResult();
@@ -87,7 +87,7 @@ public class HibernateCrud<T, ID> {
         return t;
     }
 
-    public List<T> getAll(){
+    public List<T> getAll(String className){
     	 List<T> ts = new ArrayList();
         try {
             if (session != null && session.isOpen())
@@ -95,7 +95,7 @@ public class HibernateCrud<T, ID> {
             else
                 session = factory.openSession();
             session.beginTransaction();      
-            ts = session.createQuery("from T").getResultList();
+            ts = session.createQuery("from "+className).getResultList();
             session.getTransaction().commit();
         }catch(Exception e){
             session.getTransaction().rollback();

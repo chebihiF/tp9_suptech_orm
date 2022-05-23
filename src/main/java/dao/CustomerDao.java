@@ -35,7 +35,7 @@ public class CustomerDao implements ICustomerDao{
 	@Override
 	public Customer getCustomerById(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return crud.getById(id, "id");
+		return crud.getById(id, "id",Customer.class.getName());
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class CustomerDao implements ICustomerDao{
 	@Override
 	public List<Customer> getCustomers() throws Exception {
 		// TODO Auto-generated method stub
-		return crud.getAll();
+		return crud.getAll(Customer.class.getName());
 	}
 	
 	
